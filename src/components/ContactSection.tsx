@@ -23,21 +23,35 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-muted/30">
+    <section id="contact" className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12 space-y-4"
+        >
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide uppercase">
+            {t('Get in Touch', 'تواصل معنا')}
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+            {t('Start Your Skin Journey', 'ابدأ رحلة بشرتك')}
+          </h2>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
           {/* Newsletter */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-card rounded-2xl border border-border p-8 glow-primary"
+            className="bg-card rounded-2xl border border-border p-6 md:p-8 glow-primary"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                 <Mail className="h-5 w-5 text-primary" />
               </div>
-              <h3 className="font-display text-xl font-bold text-foreground">
+              <h3 className="font-display text-lg md:text-xl font-bold text-foreground">
                 {t('Join Our Newsletter', 'انضم لنشرتنا البريدية')}
               </h3>
             </div>
@@ -47,7 +61,7 @@ const ContactSection = () => {
                 'احصل على نصائح حصرية للعناية بالبشرة ووصول مبكر للمنتجات الجديدة وخصم 15% على طلبك الأول.'
               )}
             </p>
-            <form onSubmit={handleNewsletter} className="flex gap-3">
+            <form onSubmit={handleNewsletter} className="flex flex-col sm:flex-row gap-3">
               <Input
                 type="email"
                 required
@@ -56,7 +70,7 @@ const ContactSection = () => {
                 placeholder={t('your@email.com', 'بريدك@الإلكتروني.com')}
                 className="flex-1"
               />
-              <Button type="submit" className="gap-1.5">
+              <Button type="submit" className="gap-1.5 shrink-0">
                 <Send className="h-4 w-4" />
                 {t('Subscribe', 'اشترك')}
               </Button>
@@ -68,13 +82,13 @@ const ContactSection = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-card rounded-2xl border border-border p-8 glow-gold"
+            className="bg-card rounded-2xl border border-border p-6 md:p-8 glow-gold"
           >
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center shrink-0">
                 <CalendarCheck className="h-5 w-5 text-secondary" />
               </div>
-              <h3 className="font-display text-xl font-bold text-foreground">
+              <h3 className="font-display text-lg md:text-xl font-bold text-foreground">
                 {t('Book Dermatology Consultation', 'احجز استشارة جلدية')}
               </h3>
             </div>
