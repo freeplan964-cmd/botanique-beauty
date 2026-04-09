@@ -58,9 +58,8 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" onClick={toggle} className="gap-1.5 text-muted-foreground">
+          <Button variant="ghost" size="icon" onClick={toggle} className="text-muted-foreground" title={lang === 'en' ? 'عربي' : 'English'}>
             <Globe className="h-4 w-4" />
-            {lang === 'en' ? 'عربي' : 'EN'}
           </Button>
           <Button size="sm" className="hidden sm:inline-flex" asChild>
             <a href="#products" onClick={scrollLink('#products')}>{t('Shop Now', 'تسوق الآن')}</a>
