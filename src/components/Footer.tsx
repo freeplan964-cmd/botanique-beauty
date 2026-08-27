@@ -1,39 +1,28 @@
-import { useLanguage } from '@/context/LanguageContext';
-import { Leaf } from 'lucide-react';
+import { ShieldCheck, Github, Linkedin, Twitter } from "lucide-react";
 
-const Footer = () => {
-  const { t } = useLanguage();
-
-  const scrollTo = (href: string) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
+export function Footer() {
   return (
-    <footer className="py-10 md:py-12 bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
-          <a
-            href="#"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="flex items-center gap-2"
-          >
-            <Leaf className="h-5 w-5" />
-            <span className="font-display text-lg font-bold tracking-wide">Botanique</span>
-          </a>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-sm opacity-80">
-            <a href="#features" onClick={scrollTo('#features')} className="hover:opacity-100 transition-opacity">{t('Science', 'العلم')}</a>
-            <a href="#products" onClick={scrollTo('#products')} className="hover:opacity-100 transition-opacity">{t('Products', 'المنتجات')}</a>
-            <a href="#gallery" onClick={scrollTo('#gallery')} className="hover:opacity-100 transition-opacity">{t('Gallery', 'المعرض')}</a>
-            <a href="#contact" onClick={scrollTo('#contact')} className="hover:opacity-100 transition-opacity">{t('Consult', 'استشارة')}</a>
-          </div>
-          <p className="text-xs opacity-60 text-center">
-            © 2026 Botanique. {t('All rights reserved.', 'جميع الحقوق محفوظة.')}
-          </p>
+    <footer className="border-t border-border py-10 mt-10">
+      <div className="mx-auto max-w-7xl px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex items-center gap-2 text-sm">
+          <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-[var(--gradient-gold)] text-primary-foreground">
+            <ShieldCheck className="h-3.5 w-3.5" />
+          </span>
+          <span className="font-display font-semibold">Aaron<span className="gold-text">.fin</span></span>
+          <span className="text-muted-foreground ml-2">© {new Date().getFullYear()} — Built with discretion.</span>
+        </div>
+        <div className="flex items-center gap-2">
+          {[Github, Linkedin, Twitter].map((Icon, i) => (
+            <a
+              key={i}
+              href="#"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface/60 hover:text-gold hover:border-gold/40 transition-colors"
+            >
+              <Icon className="h-4 w-4" />
+            </a>
+          ))}
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
